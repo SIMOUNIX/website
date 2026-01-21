@@ -7,26 +7,18 @@ export default function Home() {
 
   return (
     <section className="hero">
-      <h1 className="hero-title">Minimal notes on software and food.</h1>
-      <p className="hero-intro">
-        Two focused collections: tech notes for software decisions and recipes
-        for repeatable, kitchen-tested meals.
-      </p>
-      <div className="section-block">
-        <h2 className="section-title">{notes?.label ?? "Tech Notes"}</h2>
-        <PostList
-          category="notes"
-          limit={2}
-          emptyMessage={notes?.emptyMessage}
+      <h1 className="hero-title">hello!</h1>
+      <div className="home-section-block">
+        <img
+          className="hero-avatar"
+          src="/images/profile.jpg"
+          alt="Simon Thuaud"
+          loading="lazy"
         />
-      </div>
-      <div className="section-block">
-        <h2 className="section-title">{recipes?.label ?? "Recipes"}</h2>
-        <PostList
-          category="recipes"
-          limit={2}
-          emptyMessage={recipes?.emptyMessage}
-        />
+        <p className="hero-intro">
+          I am THUAUD Simon a simple guy that like programming and AI. My other
+          passion is cooking. This website is being filled...
+        </p>
       </div>
     </section>
   );
