@@ -12,7 +12,7 @@ const navItems = [
 export default function Nav() {
   return (
     <header className="nav">
-      <div className="nav-brand">simounix</div>
+      <div className="nav-brand">simon thuaud</div>
       <nav className="nav-links">
         {navItems.map((item) => (
           <NavLink

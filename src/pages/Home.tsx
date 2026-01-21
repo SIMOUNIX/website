@@ -7,7 +7,6 @@ export default function Home() {
 
   return (
     <section className="hero">
-      <span className="hero-eyebrow">Studio</span>
       <h1 className="hero-title">Minimal notes on software and food.</h1>
       <p className="hero-intro">
         Two focused collections: tech notes for software decisions and recipes
