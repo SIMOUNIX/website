@@ -1,4 +1,4 @@
-import type { AnchorHTMLAttributes, ReactNode } from "react";
+import type { AnchorHTMLAttributes, ImgHTMLAttributes, ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -29,6 +29,24 @@ function Anchor({ href = "", children, ...props }: AnchorProps) {
   );
 }
 
+type ImageProps = ImgHTMLAttributes<HTMLImageElement>;
+
+function Image({ src, alt, ...props }: ImageProps) {
+  return (
+    <figure className="prose-figure">
+      <img
+        src={src}
+        alt={alt || ""}
+        loading="lazy"
+        decoding="async"
+        {...props}
+      />
+      {alt && <figcaption>{alt}</figcaption>}
+    </figure>
+  );
+}
+
 export const mdxComponents = {
   a: Anchor,
+  img: Image,
 };

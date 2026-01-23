@@ -1,9 +1,10 @@
-import PostList from "../components/PostList";
-import { getCategory } from "../lib/categories";
+import { useSEO } from "../lib/seo";
 
 export default function Home() {
-  const recipes = getCategory("recipes");
-  const notes = getCategory("notes");
+  useSEO({
+    description:
+      "Personal website of Simon Thuaud. Developer passionate about programming, AI, and cooking.",
+  });
 
   return (
     <section className="hero">

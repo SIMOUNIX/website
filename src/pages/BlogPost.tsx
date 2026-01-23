@@ -3,12 +3,22 @@ import { formatDate } from "../lib/date";
 import { getPostBySlug } from "../lib/posts";
 import { getCategory } from "../lib/categories";
 import { mdxComponents } from "../components/mdx";
+import { useSEO } from "../lib/seo";
 import NotFound from "./NotFound";
 
 export default function BlogPost() {
   const { slug, category } = useParams();
   const meta = category ? getCategory(category) : null;
   const post = slug && meta ? getPostBySlug(slug, meta.key) : null;
+
+  useSEO(
+    post
+      ? {
+          title: post.frontmatter.title,
+          description: post.frontmatter.summary,
+        }
+      : {}
+  );
 
   if (!post || !meta) {
     return <NotFound />;

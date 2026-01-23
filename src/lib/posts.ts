@@ -22,7 +22,7 @@ type MdxModule = {
 
 const modules = import.meta.glob(
   ["../content/notes/*.mdx", "../content/recipes/*.mdx"],
-  { eager: true },
+  { eager: true }
 );
 
 const posts: Post[] = Object.entries(modules).map(([path, mod]) => {
@@ -55,7 +55,7 @@ export function getPostBySlug(slug: string, category?: CategoryKey) {
     posts.find(
       (post) =>
         post.slug === slug &&
-        (!category || post.frontmatter.category === category),
+        (!category || post.frontmatter.category === category)
     ) ?? null
   );
 }

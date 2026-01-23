@@ -8,7 +8,7 @@ export function render(url: string) {
   return renderToString(
     <StaticRouter location={url}>
       <App />
-    </StaticRouter>,
+    </StaticRouter>
   );
 }
 
