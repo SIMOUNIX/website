@@ -1,18 +1,52 @@
 import { Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import CategoryIndex from "./pages/CategoryIndex";
-import BlogPost from "./pages/BlogPost";
-import NotFound from "./pages/NotFound";
+
+const Home = lazy(() => import("./pages/Home"));
+const CategoryIndex = lazy(() => import("./pages/CategoryIndex"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+function PageLoader() {
+  return <div className="page-loader">Loading...</div>;
+}
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path=":category" element={<CategoryIndex />} />
-        <Route path=":category/:slug" element={<BlogPost />} />
-        <Route path="*" element={<NotFound />} />
+        <Route
+          index
+          element={
+            <Suspense fallback={<PageLoader />}>
+              <Home />
+            </Suspense>
+          }
+        />
+        <Route
+          path=":category"
+          element={
+            <Suspense fallback={<PageLoader />}>
+              <CategoryIndex />
+            </Suspense>
+          }
+        />
+        <Route
+          path=":category/:slug"
+          element={
+            <Suspense fallback={<PageLoader />}>
+              <BlogPost />
+            </Suspense>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<PageLoader />}>
+              <NotFound />
+            </Suspense>
+          }
+        />
       </Route>
     </Routes>
   );
