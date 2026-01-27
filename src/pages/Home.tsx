@@ -17,8 +17,9 @@ export default function Home() {
           loading="lazy"
         />
         <p className="hero-intro">
-          I am THUAUD Simon a simple guy that like programming and AI. My other
-          passion is cooking. This website is being filled...
+          I'm Simon Thuaud, a developer focused on programming and AI. When I'm
+          away from the keyboard, I'm usually cooking or exercising (I am trying to improve my pull-ups). This site is a place for
+          notes, recipes, and experiments - more soon.
         </p>
       </div>
     </section>
