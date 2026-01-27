@@ -1,18 +1,17 @@
 import { NavLink } from "react-router-dom";
 import { categories } from "../lib/categories";
 
-const navItems = [
-  { to: "/", label: "Home" },
-  ...categories.map((category) => ({
-    to: category.path,
-    label: category.label,
-  })),
-];
+const navItems = categories.map((category) => ({
+  to: category.path,
+  label: category.label,
+}));
 
 export default function Nav() {
   return (
     <header className="nav">
-      <div className="nav-brand">simon thuaud</div>
+      <NavLink to="/" className="nav-brand">
+        simon thuaud
+      </NavLink>
       <nav className="nav-links">
         {navItems.map((item) => (
           <NavLink
