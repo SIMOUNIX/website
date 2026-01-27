@@ -3,7 +3,6 @@ import FooterItem from "./FooterItem";
 export default function Footer() {
   return (
     <footer className="footer">
-      <span></span>
       <FooterItem
         href="https://github.com/simounix"
         label="simounix"

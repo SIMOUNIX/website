@@ -79,7 +79,7 @@ a:hover {
 
 .site {
   max-width: var(--content-width);
-  margin: 40px auto 96px;
+  margin: 40px auto ;
   padding: 0 var(--content-padding);
 }
 
@@ -120,7 +120,7 @@ a:hover {
 }
 
 .content {
-  min-height: 60vh;
+  min-height: 0;
 }
 
 .hero {
@@ -249,7 +249,7 @@ a:hover {
 }
 
 .footer {
-  margin-top: 64px;
+  margin-top: 40px;
   font-size: var(--font-size-sm);
   color: var(--muted);
   display: flex;
