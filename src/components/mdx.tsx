@@ -31,12 +31,14 @@ function Anchor({ href = "", children, ...props }: AnchorProps) {
 
 type ImageProps = ImgHTMLAttributes<HTMLImageElement>;
 
-function Image({ src, alt, ...props }: ImageProps) {
+function Image({ src, alt, width, height, ...props }: ImageProps) {
   return (
     <figure className="prose-figure">
       <img
         src={src}
         alt={alt || ""}
+        width={width}
+        height={height}
         loading="lazy"
         decoding="async"
         {...props}

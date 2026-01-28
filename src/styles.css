@@ -185,20 +185,19 @@ a:hover {
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: 18px;
+  gap: 28px;
+  margin-top: 24px;
 }
 
 .post-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  transition: opacity 0.15s ease;
 }
 
-.post-row {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.post-item:hover {
+  opacity: 0.7;
 }
 
 .post-title {
@@ -210,9 +209,10 @@ a:hover {
 }
 
 .post-item .post-title {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 500;
   letter-spacing: -0.01em;
+  line-height: 1.4;
 }
 
 .post-meta {
@@ -222,12 +222,8 @@ a:hover {
   margin: 0;
 }
 
-.post-item:hover .post-title {
-  color: #111111;
-}
-
 .post-summary {
-  margin: 2px 0 0;
+  margin: 0;
   color: var(--muted);
   font-size: var(--font-size-sm);
   line-height: 1.6;
@@ -428,17 +424,6 @@ a:hover {
   font-size: var(--font-size-sm);
 }
 
-@media (min-width: 768px) {
-  .post-row {
-    flex-direction: row;
-    align-items: baseline;
-  gap: 10px;
-  }
-
-  .post-row .post-meta {
-    width: 104px;
-  }
-}
 
 @media (max-width: 720px) {
   .site {

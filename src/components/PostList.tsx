@@ -12,7 +12,7 @@ type PostListProps = {
 
 export default function PostList({
   limit,
-  showSummary,
+  showSummary = true,
   category,
   emptyMessage = "No posts yet.",
 }: PostListProps) {
@@ -31,15 +31,13 @@ export default function PostList({
     <div className="post-list">
       {visiblePosts.map((post) => (
         <Link key={post.slug} to={getPostPath(post)} className="post-item">
-          <div className="post-row">
-            <p className="post-meta">
-              {formatDate(post.frontmatter.publishedAt)}
-            </p>
-            <h3 className="post-title">{post.frontmatter.title}</h3>
-          </div>
-          {showSummary ? (
+          <h3 className="post-title">{post.frontmatter.title}</h3>
+          <p className="post-meta">
+            {formatDate(post.frontmatter.publishedAt)}
+          </p>
+          {showSummary && post.frontmatter.summary && (
             <p className="post-summary">{post.frontmatter.summary}</p>
-          ) : null}
+          )}
         </Link>
       ))}
     </div>
