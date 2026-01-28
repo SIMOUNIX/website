@@ -14,7 +14,8 @@ export default function Home() {
           className="hero-avatar"
           src="/images/profile.jpg"
           alt="Simon Thuaud"
-          loading="lazy"
+          width={1679}
+          height={1924}
         />
         <p className="hero-intro">
           I'm Simon Thuaud, a developer focused on programming and AI. When I'm
