@@ -79,7 +79,7 @@ a:hover {
 
 .site {
   max-width: var(--content-width);
-  margin: 40px auto ;
+  margin: 40px auto;
   padding: 0 var(--content-padding);
 }
 
@@ -423,7 +423,6 @@ a:hover {
   text-align: left;
   font-size: var(--font-size-sm);
 }
-
 
 @media (max-width: 720px) {
   .site {
