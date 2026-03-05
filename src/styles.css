@@ -200,6 +200,13 @@ a:hover {
   opacity: 0.7;
 }
 
+.post-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .post-title {
   font-family: var(--font-display);
   font-size: 1.6rem;

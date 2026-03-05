@@ -1,4 +1,4 @@
-export type CategoryKey = "recipes" | "notes";
+export type CategoryKey = "foods" | "notes";
 
 export type CategoryMeta = {
   key: CategoryKey;
@@ -17,11 +17,11 @@ export const categories: CategoryMeta[] = [
     emptyMessage: "No notes yet.",
   },
   {
-    key: "recipes",
-    label: "Recipes",
-    path: "/recipes",
-    description: "Minimal recipes with clear ratios and repeatable steps.",
-    emptyMessage: "No recipes yet.",
+    key: "foods",
+    label: "Food Notes",
+    path: "/foods",
+    description: "Thoughts on cooking and food exploration.",
+    emptyMessage: "No thoughts yet.",
   },
 ];
 
