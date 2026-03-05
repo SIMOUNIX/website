@@ -21,7 +21,7 @@ type MdxModule = {
 };
 
 const modules = import.meta.glob(
-  ["../content/notes/*.mdx", "../content/recipes/*.mdx"],
+  ["../content/notes/*.mdx", "../content/foods/*.mdx"],
   { eager: true }
 );
 
