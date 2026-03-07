@@ -1,0 +1,50 @@
+---
+title: 'Choosing the Right LLM for Your Use Case'
+publishedAt: '2026-03-07'
+summary: 'With new models dropping every week, picking the right LLM comes down to a few practical questions. Here is what actually matters.'
+category: 'notes'
+---
+
+With new models releasing every week and every lab claiming state-of-the-art performance, choosing the right LLM for a project can feel paralyzing. But under all the noise, the decision usually comes down to a handful of practical criteria that don't change much regardless of the model.
+
+## Start With the Model Card
+
+Every serious model ships with a model card or technical report. Before looking at anything else, read it. A model card tells you what tasks the model was trained and fine-tuned for, what data it saw, and where it is known to underperform. Benchmark scores in headlines are marketing. Model cards are the actual specification.
+
+[Hugging Face](https://huggingface.co/models) hosts model cards for nearly every open model, and most frontier labs publish technical reports alongside their releases. For example, a model might score well on MMLU (a broad academic knowledge benchmark) while being mediocre at code generation. If your use case is coding, that benchmark is nearly irrelevant. The model card will tell you the benchmarks that actually match your task.
+
+## Match the Model to the Task
+
+LLMs are not interchangeable. They are optimized for different things, and picking the wrong category is the most common mistake.
+
+Reasoning models like o3 or DeepSeek-R1 are trained with extended thinking steps and excel at math, logic, and multi-step problem solving. They are slower and more expensive, and using them for simple tasks is wasteful. General-purpose models like Claude or GPT-4o are strong across coding, writing, and conversation. Smaller, distilled models like Haiku or Gemini Flash are optimized for low latency and cost at scale, but they cut corners on complex reasoning. Multimodal models add support for images, audio, or video alongside text, which only matters if your pipeline actually needs it.
+
+[Artificial Analysis](https://artificialanalysis.ai) is a good independent resource for comparing models across these dimensions with consistent methodology.
+
+## Context Window
+
+The context window determines how much text the model can process in a single call, measured in tokens. A token is roughly four characters or about three-quarters of a word in English. OpenAI has a useful [tokenizer tool](https://platform.openai.com/tokenizer) if you want to get a feel for how your content maps to token counts.
+
+If you are building a chatbot with short conversations, 8k tokens is plenty. If you are summarizing long documents, indexing codebases, or maintaining long conversation histories, you need 128k or more. Most frontier models today offer at least 128k. Some reach 1M tokens, though quality tends to degrade at the extremes of a very large window. Know your realistic input size before choosing.
+
+## Speed vs. Quality
+
+There is always a tradeoff between model quality and inference speed. Larger models produce better outputs but take longer to respond and cost more per token. Smaller models respond fast and cheap but are more likely to hallucinate or miss nuance.
+
+[Artificial Analysis](https://artificialanalysis.ai) also tracks latency and throughput benchmarks across providers, which is more useful than running your own benchmarks from scratch. For a consumer-facing product where response latency directly affects experience, a slightly worse model that responds in one second beats a brilliant model that takes five. For a background batch job that processes documents overnight, the tradeoff flips entirely.
+
+## Cost
+
+LLM pricing is per token, charged separately for input and output. This compounds quickly at scale. A model that costs ten times more per token might be twice as capable, but if your workload is high volume and the task is simple, the math rarely justifies the spend.
+
+Most labs publish pricing pages directly: [OpenAI](https://openai.com/api/pricing), [Anthropic](https://www.anthropic.com/pricing), [Google](https://ai.google.dev/pricing). Before committing to a model in production, estimate your monthly token usage across a real workload and run the numbers. Costs that look manageable in testing can become significant fast.
+
+## Privacy and Deployment Constraints
+
+Calling a third-party API means your data leaves your infrastructure. For many applications this is fine, but for healthcare, legal, or enterprise use cases with strict data governance requirements, it may not be.
+
+If that is a constraint, self-hostable open models are the answer. [Ollama](https://ollama.com) makes it straightforward to run models like Llama, Mistral, or Qwen locally. The tradeoff is that you own the infrastructure and operational burden, but you also own the data entirely.
+
+## Conclusion
+
+There is no universally best LLM. There is only the right model for your specific task, your latency requirements, and your cost and privacy constraints. Start from the task, filter by context window and deployment needs, compare cost at realistic scale, then test the shortlist on real data rather than curated demos. That process cuts through most of the noise.

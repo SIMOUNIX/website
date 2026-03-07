@@ -1,53 +1,74 @@
 ---
-title: 'The Power of Static Typing in Programming'
-publishedAt: '2024-04-07'
-summary: 'In the ever-evolving landscape of software development, the debate between dynamic and static typing continues to be a hot topic.'
+title: 'Why I Started Typing My Python'
+publishedAt: '2026-03-01'
+summary: 'My professor showed me typed Python in class and it changed how I write code. Here is what clicked for me.'
 category: 'notes'
 ---
 
-In the ever-evolving landscape of software development, the debate between dynamic and static typing continues to be a hot topic. While dynamic typing offers flexibility and rapid development, static typing brings its own set of powerful advantages that can significantly improve the quality and maintainability of code. In this post, we'll explore why static typing is crucial for developers, accompanied by practical examples through markdown code snippets.
+For a long time I wrote Python the way most people start: no type annotations, just variables flying around and hoping the function receives what you think it does. It worked, until it didn't. What actually changed my mind was a class where my professor refactored a messy untyped function live, and suddenly the editor was catching bugs before we even ran anything.
 
-## Improved Code Quality and Safety
+## The Problem With Untyped Code
 
-One of the most compelling reasons to use static typing is the improvement it brings to code quality and safety. By enforcing type checks at compile time, static typing catches errors early in the development process, reducing the chances of runtime errors.
+Here is the kind of code I used to write without thinking twice about it:
 
-```ts
-function greet(name: string): string {
-  return `Hello, ${name}!`
-}
+```python
+def get_discount(price, discount):
+    return price - (price * discount)
 
-// This will throw an error at compile time, preventing potential runtime issues.
-let message: string = greet(123)
+total = get_discount("19.99", 0.1)
 ```
 
-## Enhanced Readability and Maintainability
+This runs without error. Python happily tries to multiply a string by a float and then crashes at runtime with a `TypeError`. You only find out something is wrong when the code actually executes, which in a real app might be deep inside a user flow.
 
-Static typing makes code more readable and maintainable. By explicitly declaring types, developers provide a clear contract of what the code does, making it easier for others (or themselves in the future) to understand and modify the codebase.
+## Adding Type Hints
 
-## Facilitates Tooling and Refactoring
+Python introduced type hints in [PEP 484](https://peps.python.org/pep-0484/) (Python 3.5). They don't change how the code runs, but they tell you and your tools what types are expected:
 
-Modern IDEs leverage static typing to offer advanced features like code completion, refactoring, and static analysis. These tools can automatically detect issues, suggest fixes, and safely refactor code, enhancing developer productivity and reducing the likelihood of introducing bugs during refactoring.
+```python
+def get_discount(price: float, discount: float) -> float:
+    return price - (price * discount)
 
-```csharp
-// Refactoring example: Renaming a method in C#
-public class Calculator {
-    public int Add(int a, int b) {
-        return a + b;
-    }
-}
-
-// After refactoring `Add` to `Sum`, all references are automatically updated.
-public class Calculator {
-    public int Sum(int a, int b) {
-        return a + b;
-    }
-}
+total = get_discount("19.99", 0.1)  # editor flags this immediately
 ```
 
-## Performance Optimizations
+Now your editor (and tools like [ty](https://github.com/astral-sh/ty)) will underline that string argument in red before you run a single line. The bug moves from runtime to edit time.
 
-Static typing can lead to better performance. Since types are known at compile time, compilers can optimize the generated code more effectively. This can result in faster execution times and lower resource consumption.
+## It Gets More Useful With Complex Data
+
+Where type hints really earn their place is when you're passing structured data around:
+
+```python
+# without types — you have no idea what this function expects
+def process_user(user):
+    return user["name"].upper()
+
+# with types — the contract is explicit
+def process_user(user: dict[str, str]) -> str:
+    return user["name"].upper()
+```
+
+Even better, you can use `TypedDict` or dataclasses to define the shape of your data properly:
+
+```python
+from typing import TypedDict
+
+class User(TypedDict):
+    name: str
+    age: int
+
+def process_user(user: User) -> str:
+    return user["name"].upper()
+
+process_user({"name": "Simon", "age": "not a number"})
+# ^ ty catches this: 'str' is not assignable to 'int'
+```
+
+## What You Get for Free
+
+Once you add types, your editor can autocomplete fields on objects, warn you about impossible operations, and navigate your codebase more accurately. Refactoring becomes much safer because the type checker tells you everywhere a change breaks something, rather than you finding out through tests or worse, production.
 
 ## Conclusion
 
-Static typing offers numerous benefits that contribute to the development of robust, efficient, and maintainable software. By catching errors early, enhancing readability, facilitating tooling, and enabling optimizations, static typing is an invaluable asset for developers. As the software industry continues to mature, the importance of static typing in ensuring code quality and performance cannot be overstated. Whether you're working on a large-scale enterprise application or a small project, embracing static typing can lead to better software development outcomes.
+You don't have to annotate everything at once. Python's type system is gradual, meaning you can add hints file by file and the untyped parts just get ignored. Start with function signatures, especially ones shared between modules, and the value shows up quickly. My professor's point was simple: the earlier you catch a bug, the cheaper it is to fix. Types are one of the cheapest ways to catch them earlier.
+
+I remember very clearly the last sentence that made me switch to typed Python: "When you run your code you spend hours debugging types, I just spend 5 more minutes thinking about it and writing it down while coding".
