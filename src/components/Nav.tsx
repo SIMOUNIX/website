@@ -1,10 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { categories } from "../lib/categories";
-
-const navItems = categories.map((category) => ({
-  to: category.path,
-  label: category.label,
-}));
 
 export default function Nav() {
   return (
@@ -13,16 +7,12 @@ export default function Nav() {
         simon thuaud
       </NavLink>
       <nav className="nav-links">
-        {navItems.map((item) => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            end={item.to === "/"}
-            className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
-          >
-            {item.label}
-          </NavLink>
-        ))}
+        <NavLink
+          to="/about"
+          className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
+        >
+          about
+        </NavLink>
       </nav>
     </header>
   );

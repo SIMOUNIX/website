@@ -1,11 +1,9 @@
 import type { ComponentType } from "react";
-import { getCategoryPath, type CategoryKey } from "./categories";
-
 export type Frontmatter = {
   title: string;
   publishedAt: string;
   summary: string;
-  category: CategoryKey;
+  category: string;
   image?: string;
 };
 
@@ -20,10 +18,7 @@ type MdxModule = {
   frontmatter: Frontmatter;
 };
 
-const modules = import.meta.glob(
-  ["../content/notes/*.mdx", "../content/foods/*.mdx"],
-  { eager: true }
-);
+const modules = import.meta.glob("../content/*.mdx", { eager: true });
 
 const posts: Post[] = Object.entries(modules).map(([path, mod]) => {
   const module = mod as MdxModule;
@@ -50,14 +45,8 @@ export function getAllPosts() {
   });
 }
 
-export function getPostBySlug(slug: string, category?: CategoryKey) {
-  return (
-    posts.find(
-      (post) =>
-        post.slug === slug &&
-        (!category || post.frontmatter.category === category)
-    ) ?? null
-  );
+export function getPostBySlug(slug: string) {
+  return posts.find((post) => post.slug === slug) ?? null;
 }
 
 export function getPostSlugs() {
@@ -65,7 +54,7 @@ export function getPostSlugs() {
 }
 
 export function getPostPath(post: Post) {
-  return `${getCategoryPath(post.frontmatter.category)}/${post.slug}`;
+  return `/blog/${post.slug}`;
 }
 
 export function getPostPaths() {

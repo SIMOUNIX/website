@@ -1,3 +1,11 @@
+export function formatShortDate(date: string) {
+  const normalized = date.includes("T") ? date : `${date}T00:00:00`;
+  return new Date(normalized).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
+}
+
 export function formatDate(date: string, includeRelative = false) {
   const currentDate = new Date();
   const normalizedDate = date.includes("T") ? date : `${date}T00:00:00`;

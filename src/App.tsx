@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 import Layout from "./components/Layout";
 
 const Home = lazy(() => import("./pages/Home"));
-const CategoryIndex = lazy(() => import("./pages/CategoryIndex"));
+const About = lazy(() => import("./pages/About"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -24,15 +24,15 @@ export default function App() {
           }
         />
         <Route
-          path=":category"
+          path="about"
           element={
             <Suspense fallback={<PageLoader />}>
-              <CategoryIndex />
+              <About />
             </Suspense>
           }
         />
         <Route
-          path=":category/:slug"
+          path="blog/:slug"
           element={
             <Suspense fallback={<PageLoader />}>
               <BlogPost />
