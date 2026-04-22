@@ -262,85 +262,6 @@ a:hover {
   border-bottom-color: var(--text);
 }
 
-/* ─── Category index ─────────────────────── */
-
-.category-header {
-  margin-bottom: 2rem;
-}
-
-.category-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin: 0 0 0.4rem;
-}
-
-.category-desc {
-  margin: 0;
-  color: var(--muted);
-  font-size: var(--font-size-sm);
-}
-
-/* ─── Post list ──────────────────────────── */
-
-.post-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.post-item {
-  display: flex;
-  flex-direction: column;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border);
-  gap: 0.2rem;
-}
-
-.post-item:first-child {
-  border-top: 1px solid var(--border);
-}
-
-.post-item:hover .post-title {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.post-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-}
-
-.post-title {
-  font-size: var(--font-size-base);
-  font-weight: 500;
-  margin: 0;
-  letter-spacing: -0.01em;
-}
-
-.post-meta {
-  color: var(--muted);
-  font-size: var(--font-size-xs);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-  flex-shrink: 0;
-  margin: 0;
-}
-
-.post-summary {
-  margin: 0;
-  color: var(--muted);
-  font-size: var(--font-size-sm);
-  line-height: 1.55;
-}
-
-.post-empty {
-  color: var(--muted);
-  font-size: var(--font-size-sm);
-  margin: 0;
-}
-
 /* ─── Blog post ──────────────────────────── */
 
 .back-link {
@@ -508,45 +429,6 @@ a:hover {
   padding: 0.5rem;
   text-align: left;
   font-size: var(--font-size-sm);
-}
-
-/* ─── Footer ─────────────────────────────── */
-
-.footer {
-  margin-top: 56px;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border);
-  font-size: var(--font-size-xs);
-  color: var(--muted);
-  display: flex;
-  gap: 16px;
-}
-
-.footer-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--muted);
-}
-
-.footer-link:hover {
-  color: var(--text);
-  opacity: 1;
-}
-
-.footer-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.footer-icon svg {
-  width: 100%;
-  height: 100%;
-  display: block;
 }
 
 /* ─── Loader ─────────────────────────────── */

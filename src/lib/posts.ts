@@ -1,11 +1,9 @@
 import type { ComponentType } from "react";
-import type { CategoryKey } from "./categories";
-
 export type Frontmatter = {
   title: string;
   publishedAt: string;
   summary: string;
-  category: CategoryKey;
+  category: string;
   image?: string;
 };
 
@@ -47,14 +45,8 @@ export function getAllPosts() {
   });
 }
 
-export function getPostBySlug(slug: string, category?: CategoryKey) {
-  return (
-    posts.find(
-      (post) =>
-        post.slug === slug &&
-        (!category || post.frontmatter.category === category)
-    ) ?? null
-  );
+export function getPostBySlug(slug: string) {
+  return posts.find((post) => post.slug === slug) ?? null;
 }
 
 export function getPostSlugs() {
