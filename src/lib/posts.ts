@@ -18,7 +18,7 @@ type MdxModule = {
   frontmatter: Frontmatter;
 };
 
-const modules = import.meta.glob("../content/**/*.mdx", { eager: true });
+const modules = import.meta.glob("../content/*.mdx", { eager: true });
 
 const posts: Post[] = Object.entries(modules).map(([path, mod]) => {
   const module = mod as MdxModule;
