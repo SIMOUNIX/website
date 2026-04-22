@@ -113,25 +113,6 @@ a:hover {
   opacity: 1;
 }
 
-/* ─── Home ───────────────────────────────── */
-
-.home-tagline {
-  margin: 0 0 2.5rem;
-  color: var(--muted);
-  font-size: var(--font-size-base);
-  line-height: 1.6;
-}
-
-.home-tagline a {
-  color: var(--text);
-  border-bottom: 1px solid var(--border);
-}
-
-.home-tagline a:hover {
-  opacity: 1;
-  border-bottom-color: var(--text);
-}
-
 /* ─── Archive ────────────────────────────── */
 
 .archive {

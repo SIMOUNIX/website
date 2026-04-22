@@ -30,7 +30,9 @@ export default function BlogPost() {
         ← back
       </Link>
       <h1 className="post-page-title">{post.frontmatter.title}</h1>
-      <p className="post-page-meta">{formatDate(post.frontmatter.publishedAt)}</p>
+      <p className="post-page-meta">
+        {formatDate(post.frontmatter.publishedAt)}
+      </p>
       <article className="prose">
         <Content components={mdxComponents} />
       </article>

@@ -26,7 +26,11 @@ export default function About() {
             experiments — more soon.
           </p>
           <p className="about-links">
-            <a href="https://github.com/simounix" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/simounix"
+              target="_blank"
+              rel="noreferrer"
+            >
               GitHub
             </a>
             {" · "}

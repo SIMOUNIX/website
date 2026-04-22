@@ -4,15 +4,12 @@ import { formatShortDate } from "../lib/date";
 import { useSEO } from "../lib/seo";
 
 function getYear(date: string) {
-  return new Date(
-    date.includes("T") ? date : `${date}T00:00:00`
-  ).getFullYear();
+  return new Date(date.includes("T") ? date : `${date}T00:00:00`).getFullYear();
 }
 
 export default function Home() {
   useSEO({
-    description:
-      "Notes on programming, AI, and cooking by Simon Thuaud.",
+    description: "Notes on programming, AI, and cooking by Simon Thuaud.",
   });
 
   const posts = getAllPosts();
@@ -29,11 +26,6 @@ export default function Home() {
 
   return (
     <div className="home">
-      <p className="home-tagline">
-        notes on programming, AI, and cooking.{" "}
-        <Link to="/about">more about me →</Link>
-      </p>
-
       {posts.length === 0 ? (
         <p className="archive-empty">No posts yet.</p>
       ) : (
