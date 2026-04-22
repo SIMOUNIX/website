@@ -203,11 +203,11 @@ a:hover {
 }
 
 .about-avatar {
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
-  object-position: center;
-  border-radius: 50%;
+  object-position: center top;
+  border-radius: 8px;
   flex-shrink: 0;
 }
 
@@ -445,8 +445,8 @@ a:hover {
   }
 
   .about-avatar {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
   }
 
   .archive-tag {

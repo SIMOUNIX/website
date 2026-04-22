@@ -20,10 +20,9 @@ export default function About() {
         <div className="about-text">
           <h1 className="about-name">Simon Thuaud</h1>
           <p className="about-bio">
-            Developer focused on programming and AI. When I'm away from the
-            keyboard, I'm usually cooking or exercising (I am trying to improve
-            my pull-ups). This site is a place for notes, recipes, and
-            experiments — more soon.
+            Software developer with a focus on AI and tooling. Between builds:
+            cooking and a persistent attempt to get better at pull-ups. This is
+            where I keep notes.
           </p>
           <p className="about-links">
             <a
