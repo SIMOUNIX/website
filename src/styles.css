@@ -118,6 +118,7 @@ a:hover {
 .archive {
   display: flex;
   flex-direction: column;
+  padding-left: 1rem;
 }
 
 .archive-section {
@@ -138,6 +139,7 @@ a:hover {
 }
 
 .archive-post {
+  position: relative;
   display: flex;
   align-items: baseline;
   gap: 0.75rem;
@@ -145,13 +147,19 @@ a:hover {
   text-decoration: none;
 }
 
-.archive-post:hover {
-  opacity: 1;
+.archive-post::before {
+  content: '·';
+  position: absolute;
+  left: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text);
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-.archive-post:hover .archive-title {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.archive-post:hover::before {
+  opacity: 1;
 }
 
 .archive-date {
