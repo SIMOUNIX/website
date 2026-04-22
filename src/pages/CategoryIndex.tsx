@@ -23,8 +23,10 @@ export default function CategoryIndex() {
 
   return (
     <section>
-      <h1 className="hero-title">{meta.label}</h1>
-      <p className="hero-intro">{meta.description}</p>
+      <div className="category-header">
+        <h1 className="category-title">{meta.label}</h1>
+        <p className="category-desc">{meta.description}</p>
+      </div>
       <PostList category={meta.key} emptyMessage={meta.emptyMessage} />
     </section>
   );

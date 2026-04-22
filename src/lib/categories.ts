@@ -1,4 +1,4 @@
-export type CategoryKey = "foods" | "notes";
+export type CategoryKey = "tech" | "foods" | "notes";
 
 export type CategoryMeta = {
   key: CategoryKey;
@@ -10,18 +10,11 @@ export type CategoryMeta = {
 
 export const categories: CategoryMeta[] = [
   {
-    key: "notes",
-    label: "Tech Notes",
-    path: "/notes",
-    description: "Field notes on systems, tooling, and software craft.",
-    emptyMessage: "No notes yet.",
-  },
-  {
-    key: "foods",
-    label: "Food Notes",
-    path: "/foods",
-    description: "Thoughts on cooking and food exploration.",
-    emptyMessage: "No thoughts yet.",
+    key: "tech",
+    label: "Tech",
+    path: "/blog",
+    description: "Notes on software, tooling, and AI.",
+    emptyMessage: "No posts yet.",
   },
 ];
 
@@ -30,5 +23,5 @@ export function getCategory(key: string) {
 }
 
 export function getCategoryPath(key: CategoryKey) {
-  return getCategory(key)?.path ?? "/notes";
+  return getCategory(key)?.path ?? "/blog";
 }
