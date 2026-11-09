@@ -6,7 +6,7 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [
     mdx({
       remarkPlugins: [
@@ -29,11 +29,14 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          react: ["react", "react-dom"],
-          router: ["react-router-dom"],
-        },
+        // client only: SSR build externalizes these
+        manualChunks: isSsrBuild
+          ? undefined
+          : {
+              react: ["react", "react-dom"],
+              router: ["react-router-dom"],
+            },
       },
     },
   },
-});
+}));
