@@ -51,4 +51,5 @@ function Image({ src, alt, width, height, ...props }: ImageProps) {
 export const mdxComponents = {
   a: Anchor,
   img: Image,
+  Image, // raw JSX tags in MDX skip the overrides, so <Image width={..} /> needs its own name
 };
