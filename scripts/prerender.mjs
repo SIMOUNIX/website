@@ -11,6 +11,7 @@ const { render, getStaticPaths } = await import(
   pathToFileURL(serverEntryPath).href
 );
 
+const SITE = "https://simonthuaud.com";
 const routes = await getStaticPaths();
 
 for (const url of routes) {
@@ -24,6 +25,11 @@ for (const url of routes) {
     );
   }
 
+  html = html.replace(
+    "</head>",
+    `<link rel="canonical" href="${SITE}${url === "/" ? "" : url}" /></head>`
+  );
+
   const routePath = url === "/" ? "" : url.replace(/^\//, "");
   const filePath = path.join(distDir, routePath, "index.html");
 
@@ -34,3 +40,11 @@ for (const url of routes) {
     await writeFile(path.join(distDir, "404.html"), html);
   }
 }
+
+const urls = routes.filter((u) => u !== "/404");
+await writeFile(
+  path.join(distDir, "sitemap.xml"),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
+    .map((u) => `  <url><loc>${SITE}${u === "/" ? "" : u}</loc></url>`)
+    .join("\n")}\n</urlset>\n`
+);
