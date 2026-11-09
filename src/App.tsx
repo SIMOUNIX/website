@@ -5,7 +5,6 @@ import About from "./pages/About";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 
-// ponytail: static imports (no lazy) so prerender emits real content for crawlers
 export default function App() {
   return (
     <Routes>
